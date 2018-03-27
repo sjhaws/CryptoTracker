@@ -1,7 +1,7 @@
 class Api::CoinsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_coin, only: [:show, :update, :destroy]
-  BASE_URL = "https://api.coinmarketcap.com/v1/ticker"
+  BASE_URL = "https://api.coinmarketcap.com/v1/ticker/"
 
   def index
     render json: current_user.coins
@@ -13,7 +13,7 @@ class Api::CoinsController < ApplicationController
     if coin = Coin.create_by_cmc_id(res)
       watched = WatchedCoin.find_or_creat_by(coin_id: coin_id, user_id: current_user.id)
       watched.update(initial_price: coin.price) if watched.initial_price.nil?
-      render json :coin
+      render json: coin
     else
       render json: {errors: "Coin not found"}
     end
