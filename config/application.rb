@@ -18,20 +18,16 @@ Bundler.require(*Rails.groups)
 
 module CryptoPortfolio
   class Application < Rails::Application
-    # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
-    confit.api_only = true
+    config.api_only = true
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins "*"
-        resource "*"
+        origins '*'
+        resource '*', 
           headers: :any,
-          methods: [:get, :post, :put, :delete]
-          expose: ["access-token", "client"]
+          methods: [:get, :post, :put, :delete],
+          expose: ['access-token', 'client']
       end
     end
-
-  
-    config.api_only = true
   end
 end

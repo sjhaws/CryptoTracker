@@ -1,9 +1,13 @@
-import { COINS, ADD_COIN, REMOVE_COIN, } from "../actions/coins"
+import { 
+  COINS,
+  ADD_COIN,
+  REMOVE_COIN,
+} from '../actions/coins';
 
-const coins = (state = [], action) => {
-  switch (action.type){
+const coins = (state = [], action ) => {
+  switch (action.type) {
     case COINS:
-      return action.coins
+      return action.coins;
     case ADD_COIN:
       return [...state, action.coin]
     case REMOVE_COIN:
@@ -13,4 +17,4 @@ const coins = (state = [], action) => {
   }
 }
 
-export default coins
+export default coins;
